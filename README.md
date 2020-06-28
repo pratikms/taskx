@@ -4,7 +4,7 @@ Taskx is a CLI task manager to manage all your TODOs from the comfort of your CL
 
 ## Installation
 
-`go get -u github.com/pratikms/taskx`
+`$ go get -u github.com/pratikms/taskx`
 
 ## Usage
 
