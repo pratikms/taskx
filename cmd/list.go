@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/pratikms/taskx-cli/db"
+	"github.com/pratikms/taskx/db"
 	"github.com/spf13/cobra"
 )
 
@@ -30,7 +30,7 @@ var listCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		tasks, err := db.AllTasks()
 		if err != nil {
-			fmt.Println("Something went wrong: ", err.Error())
+			fmt.Println("Something went wrong: ", err)
 			os.Exit(1)
 		}
 		if len(tasks) == 0 {

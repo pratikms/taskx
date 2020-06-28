@@ -21,8 +21,8 @@ import (
 	"path/filepath"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/pratikms/taskx-cli/cmd"
-	"github.com/pratikms/taskx-cli/db"
+	"github.com/pratikms/taskx/cmd"
+	"github.com/pratikms/taskx/db"
 )
 
 func must(err error) {

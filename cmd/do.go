@@ -17,7 +17,10 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strconv"
+
+	"github.com/pratikms/taskx/db"
 
 	"github.com/spf13/cobra"
 )
@@ -36,7 +39,24 @@ var doCmd = &cobra.Command{
 				ids = append(ids, id)
 			}
 		}
-		fmt.Println(ids)
+		tasks, err := db.AllTasks()
+		if err != nil {
+			fmt.Println("Something went wrong: ", err)
+			os.Exit(1)
+		}
+		for _, id := range ids {
+			if id <= 0 || id > len(tasks) {
+				fmt.Println("Invalid task number: ", id)
+				continue
+			}
+			task := tasks[id-1]
+			err := db.DeleteTask(task.Key)
+			if err != nil {
+				fmt.Printf("Failed to mark \"%s\" as completed. Error: %s\n", task.Value, err)
+			} else {
+				fmt.Printf("Marked \"%s\" as completed\n", task.Value)
+			}
+		}
 	},
 }
 
